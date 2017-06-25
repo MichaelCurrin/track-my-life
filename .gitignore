@@ -5,8 +5,11 @@ virtualenv/
 virtualenv                                                                      
 
 # local configuration files                                                     
-*.local.*                                                                       
+*.local.*
 
+# Bazaar VCS which was migrated from
+.bzr
+.bzrignore
 
 ### Recommended Python ignore list ###                                          
 
