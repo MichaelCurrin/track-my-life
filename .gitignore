@@ -8,7 +8,7 @@ virtualenv
 *.local.*
 
 # Bazaar VCS which was migrated from
-.bzr
+.bzr/
 .bzrignore
 
 # Database
