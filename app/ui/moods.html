@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Moods</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/form.css">
+
+</head>
+
+<body>
+
+    <!-- insert header -->
+
+    <!-- insert ul -->
+
+    <div class="main-content">
+
+        <form id="Activities" class="form-basic" method="post" action="/services/rest/form/moods">
+
+            <div class="form-title-row"> <h1>Moods</h1> </div>
+
+            <div class="form-title-row"> <h2>Overall</h2> </div>
+
+                <div class="form-title-row"> <h3>Rate your overall mood</h2> </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Rating</span>
+                         <input type="range" name="overall" value="0" min="-2" max="2" step="1">
+                    </label>
+                </div>
+
+                 <div class="form-row">
+                    <label>
+                        <span>Colour</span>
+                        <input type="color" name="colour" value="#cccccc">
+                    </label>
+                </div>
+
+            <div class="form-title-row"> <h2>Specific</h2> </div>
+
+                <div class="form-title-row"> <h3>Rate your mood across eight areas from 0 to 3</h2> </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Joy</span>
+                        <input type="range" name="joy" value="0" min="0" max="3" step="1">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Trust</span>
+                        <input type="range" name="trust" value="0" min="0" max="3" step="1">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Fear</span>
+                        <input type="range" name="fear" value="0" min="0" max="3" step="1">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Surprise</span>
+                        <input type="range" name="surprise" value="0" min="0" max="3" step="1">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Sadness</span>
+                        <input type="range" name="sadness" value="0" min="0" max="3" step="1">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Disgust</span>
+                        <input type="range" name="disgust" value="0" min="0" max="3" step="1">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Anger</span>
+                        <input type="range" name="anger" value="0" min="0" max="3" step="1">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Anticipation</span>
+                        <input type="range" name="anticipation" value="0" min="0" max="3" step="1">
+                    </label>
+                </div>
+
+            <!-- appears as text box on firefox but fine on Chrome-->
+            <!-- result is in format "2017-06-09T12:02" -->
+            <div class="form-row">
+                <label>
+                    <span>Entry Time</span>
+                    <input type="datetime-local" name="timestamp">
+                </label>
+            </div>
+
+                        <!-- Submit -->
+
+            <div class="form-row">
+                <button type="submit">Submit Form</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>

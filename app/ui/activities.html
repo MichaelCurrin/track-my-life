@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Activities</title>
+
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/form.css">
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Logger App</h1>
+        <a href="index.html">Home</a>
+    </header>
+
+    <ul>
+        <li><a href="/ui/index.html" >Home</a></li>
+        <li><a href="/ui/activities.html" class="active">Activities</a></li>
+        <li><a href="/ui/form-2.html">Form 2</a></li>
+    </ul>
+
+    <!-- TODO
+        How to add sections (pages) to forms
+     -->
+
+    <div class="main-content">
+
+        <!-- Replace action with thank you page
+        (which might be able to pass on data somehow)
+        or use URI of API.
+
+        Or at least use JavaScript to make button
+        show submission is done and stay on page?
+         -->
+        <form id="Activities" class="form-basic" method="post" action="/services/rest/form/activities">
+
+            <!-- Headings are centred -->
+
+            <div class="form-title-row"> <h1>Activities</h1> </div>
+
+            <div class="form-title-row"> <h2>Health</h2> </div>
+
+                <!-- Align left -->
+                <!-- Still need to figure out how to lay
+                out checkboxes as grid and with images to press -->
+                <div class="form-row">
+                    <label>
+                        <span>Exercise</span>
+                        <!-- Note on default to checked:
+                        <input type="checkbox" name="xxx" checked>
+                        -->
+                        <!-- set id=exercise or is name enough? -->
+                        <input type="checkbox" name="exercise">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Cook</span>
+                        <input type="checkbox" name="cook">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Eat Out</span>
+                        <input type="checkbox" name="eat_out">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Drinks</span>
+                        <input type="checkbox" name="drinks">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Dream</span>
+                        <input type="checkbox" name="dream">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Outdoors</span>
+                        <input type="checkbox" name="outdoors">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Clean</span>
+                        <input type="checkbox" name="clean">
+                    </label>
+                </div>
+
+
+            <div class="form-title-row"> <h2>Recreation</h2> </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Theatre</span>
+                        <input type="checkbox" name="theatre">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Art</span>
+                        <input type="checkbox" name="art">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Music</span>
+                        <input type="checkbox" name="music">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Church</span>
+                        <input type="checkbox" name="church">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Socialise</span>
+                        <input type="checkbox" name="socialise">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Relax</span>
+                        <input type="checkbox" name="relax">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Watch TV / Movies</span>
+                        <input type="checkbox" name="watch_tv_movies">
+                    </label>
+                </div>
+
+
+            <div class="form-title-row"> <h2>Romance</h2> </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Meet New Girl</span>
+                        <input type="checkbox" name="meet_new_girl">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Ask Out Girl</span>
+                        <input type="checkbox" name="ask_out_girl">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Make A Date</span>
+                        <input type="checkbox" name="make_a_date">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Go On Date</span>
+                        <input type="checkbox" name="go_on_date">
+                    </label>
+                </div>
+
+
+            <div class="form-title-row"> <h2>Personal Growth</h2> </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Achievement / Milestone</span>
+                        <input type="checkbox" name="achievement_milestone">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Do Something Bold</span>
+                        <input type="checkbox" name="do_something_bold">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Try Something New</span>
+                        <input type="checkbox" name="try_something_new">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
+                        <span>Life Event</span>
+                        <input type="checkbox" name="life_event">
+                    </label>
+                </div>
+
+            <!-- Submit -->
+
+            <div class="form-row">
+                <button type="submit">Submit Form</button>
+            </div>
+
+
+        </form>
+    </div>
+</body>
+</html>

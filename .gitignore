@@ -1,8 +1,7 @@
 ### Project-specific ignore list                                                
 
 # virtual environment - this could be a dir or a symlink to ~/.local/virtualenvs/my_venv/
-virtualenv/                                                                     
-virtualenv                                                                      
+virtualenv*
 
 # local configuration files                                                     
 *.local.*
