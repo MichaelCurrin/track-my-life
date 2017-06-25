@@ -11,6 +11,10 @@ virtualenv
 .bzr
 .bzrignore
 
+# Database
+*.db
+*.sqlite
+
 ### Recommended Python ignore list ###                                          
 
 # Byte-compiled / optimized / DLL files
