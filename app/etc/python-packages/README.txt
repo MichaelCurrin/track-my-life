@@ -1,5 +1,7 @@
-# Create your virtual environment. (This could be done in ~/.local/bin)
-$ ~/.local/virtualenv
+# Create your virtual environment.
+
+$ mkdir ~/.local/virtualenvs
+$ cd ~/.local/virtualenvs
 $ virtualenv myenv --system-site-packages
 $ source myenv/bin/activate
 
