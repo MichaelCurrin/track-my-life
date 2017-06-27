@@ -76,21 +76,22 @@ def defaultData():
         data = json.load(dataFile)
 
     # Insert all the XXX types, if not yet defined.
+    # To be completed for all tables needing default data
     '''
-    if E6dType.select().count() == 0:
-        e6dTypes = [
-            {"listOrder": 10, "name": u"Product"},
-            {"listOrder": 20, "name": u"Article"},
-            {"listOrder": 30, "name": u"Video"},
+    if MyTable.select().count() == 0:
+        MyTabledata = [
+            {"x": 10, "name": u"A"},
+            {"x": 20, "name": u"B"},
+            {"x": 30, "name": u"C"},
         ]
 
-        for record in e6dTypes:
+        for record in MyTabledata:
             logger(
-                "Inserting Enriched Types (E6D) record: {0}".format(record),
+                "Inserting XXX record: {0}".format(record),
                 context="LIB.DATABASE.DEFAULTDATA"
             )
             # Create the record by passing the data to the model
-            E6dType(**record)
+            MyTable(**record)
     '''
     # To be decided: Memories should be copied from Goals or Lessons
     # or as a new section of its own.
