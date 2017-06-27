@@ -1,0 +1,97 @@
+{
+    "Activities": {
+        "Health": [
+            "Exercise",
+            "Cook",
+            "Eat Out",
+            "Drinks",
+            "Dream",
+            "Outdoors",
+            "Clean"
+        ],
+        "Recreation": [
+            "Theatre",
+            "Art",
+            "Music",
+            "Church",
+            "Socialise",
+            "Relax",
+            "Watch TV / Movies"
+        ],
+        "Romance": [
+            "Meet New Girl",
+            "Ask Out Girl",
+            "Make A Date",
+            "Go On Date"
+        ],
+        "Personal Growth": [
+            "Achievement / Milestone",
+            "Do Something Bold",
+            "Life Event"
+        ]
+    },
+    "Needs": [
+        "Energy",
+        "Fun",
+        "Social"
+        ],
+    "States": [
+        "Well-rested",
+        "Tired",
+        "Stressed / Frustrated",
+        "Sick / Unwell",
+        "Injured"
+        ],
+    "Who Am I": [
+        "Core Values",
+        "Strengths",
+        "Weaknesses",
+        "Opportunities",
+        "Obstacles",
+        "Skills"
+        ],
+    "Goals": [
+        "Stuff and Plans",
+        "Family",
+        "Finances",
+        "Health",
+        "Personal Growth",
+        "Recreation",
+        "Romance",
+        "Social Life",
+        "Work"
+    ],
+    "Tasks": [
+        "Tasks",
+        "Errands"
+    ],
+    "Deadlines": [
+        "Date",
+        "Like",
+        "Maybe",
+        "Someday",
+        "Completed"
+    ],
+    "Habits": [
+        "Exercise - Run",
+        "Exercise - Strength",
+        "Drink Water",
+        "Gratefulness Diary",
+        "Sleep before 11pm"
+    ],
+    "Habit Frequencies": [
+        "Daily",
+        "Weekly",
+        "Monthly",
+        "Yearly"
+    ],
+    "Lessons": [
+        "Money",
+        "Health",
+        "Love",
+        "People",
+        "Success",
+        "Happiness",
+        "Time"
+    ]
+}
