@@ -11,6 +11,8 @@ from random import randint
 
 from sqlobject import AND, OR
 
+# Allow dirs in app to be imported.
+import configureTests
 from lib import database as db
 
 # Create user to be used for record inserts.

@@ -2,6 +2,8 @@
 """
 Test use of model.py as a sqlite database.
 """
+# Allow dirs in app to be imported.
+import configureTests
 from lib import database as db
 
 d1 = range(100)
