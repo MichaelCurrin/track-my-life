@@ -1,3 +1,4 @@
+-*- coding: utf-8 -*-
 """
 Form handler.
 
@@ -53,6 +54,7 @@ class Form(object):
         Ask user to login/register otherwise.
 
         @param name: The name of the area to be tracked. Default to None.
+        
         @keyword args: Values after the name in the URL as list.
         @keyword kwargs: Form field names and values as a dictionary.
         """
@@ -94,8 +96,6 @@ class Analytics(object):
     services/rest/form/analytics?name={name}.
 
     Get aggregated data out from database for the user.
-
-    TODO: Create a form for selecting data area and date range.
     """
     exposed = True
 
