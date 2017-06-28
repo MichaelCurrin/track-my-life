@@ -13,7 +13,6 @@ from models import *
 # e.g. database.conn.queryOne(statement)
 from models.connection import conn
 
-# Todo: move to app.conf
 DEFAULTS_FILE = 'lib/' + 'defaultData.json'
 
 
