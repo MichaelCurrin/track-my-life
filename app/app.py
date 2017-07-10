@@ -14,6 +14,7 @@ import cherrypy
 
 # Be careful when testing this line alone in python command line, as you are
 # working in '__main__' and the script will be imported as '__main__'.
+from lib import conf
 from lib import database as db
 
 ### TO BE REMOVED
@@ -46,11 +47,30 @@ cherrypy.root.services = setupSERVICES()
 
 cherrypy.log('Mounting app')
 
-# For implementation on PythonAnywhere.com,
+# For implementation on PythonAnywhere.com:
 # mount app directories as `app` object, as set in wsgi file.
-app = cherrypy.Application(cherrypy.root, script_name='',
-                           config='etc/cherrypy.conf')
+start = True # main?
 
-cherrypy.log('Starting app')
-cherrypy.log('Engine state: {}'.format(cherrypy.engine.state))
-cherrypy.log('Version: {}'.format(cherrypy.__version__))
+configfile = 'etc/cherrypy.conf'
+# configDict={
+#         'global':
+#             {
+#             #'environment':'embedded',
+#             'socket_port': 9090,
+#             },
+#         }
+
+# The script runs in the cloud PythonAnywhere.com by importing the `app` object and running it on the WSGI file. For all other uses, it is expected that this script will be run as the main file.
+if __name__ == '__main__':
+    cherrypy.log('Cherrypy Version: {}'.format(cherrypy.__version__))
+
+    cherrypy.tree.mount(cherrypy.root, script_name='', config=configfile)
+    # It's not working to set this in [global] under config file.
+    cherrypy.server.socket_port = conf.getint('API', 'port')
+
+    cherrypy.engine.start()
+    cherrypy.engine.block()
+
+else:
+    app = cherrypy.Application(cherrypy.root, script_name='',
+                               config='etc/cherrypy.conf')
