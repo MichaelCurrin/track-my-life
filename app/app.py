@@ -52,11 +52,13 @@ cherrypy.log('Mounting app')
 start = True # main?
 
 configfile = 'etc/cherrypy.conf'
+# Updated to have server in first part of socket_port arg so this can be retried now.
+# It appears in a testing a small script that the config dictionary can be passed for quickstart but not mount.
 # configDict={
 #         'global':
 #             {
 #             #'environment':'embedded',
-#             'socket_port': 9090,
+#             'server.socket_port': 9090,
 #             },
 #         }
 
