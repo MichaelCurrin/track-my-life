@@ -1,13 +1,18 @@
 #!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 """
-Web base application for HTML frontend and python REST API, intended for
-logging and journaling of personal details.
+Track My Life server application file.
+
+Run a Python server to serve HTML and allow REST API requests, so users can
+log and read their personal activity in a browser.
 """
 __author__ = '@MichaelCurrin'
 
+import os
 import sys
-# From a PythonAnywhere cherrypy tutorial.
+# From a PythonAnywhere cherrypy tutorial. TODO confirm how this works
+# with own logs vs PythonAnywhere logs and also the fact the log.screen is
+# set to False by using embedded mode.
 sys.stdout = sys.stderr
 
 import cherrypy
@@ -16,63 +21,43 @@ import cherrypy
 # working in '__main__' and the script will be imported as '__main__'.
 from lib import conf
 from lib import database as db
-
-### TO BE REMOVED
-# For development phase, start with fresh tables each time app is reloaded,
-db.initialise(dropAll=True)
-# Once the database is stable, the line should be removed.
-# then any changes in classes will be recognised in python when app reloads
-# but changes to DB will have to be done with update script written in SQL.
-# (or use SQLObject with add/remove column etc. if it allows it)
-###
-
-# Build Services API.
 from services import setupSERVICES
+
+
+CONFIG_FILES = ('etc/cherrypy.conf', 'etc/cherrypy.local.conf')
 
 
 class Root(object):
     """
-    Service for application root as baseURI/ or baseURI/ui/index.html
+    Service for application root.
     """
     @cherrypy.expose
     def index(self):
         """
         Static home page.
+
+        TODO: Serve this and other pages off of root using the conf rather,
+        without ui in path.
         """
         return file('ui/index.html')
 
 
+# Only keep dropAll=True while in develop mode, to replace tables each time
+# but also delete all data.
+db.initialise(dropAll=True)
+
 cherrypy.root = Root()
 cherrypy.root.services = setupSERVICES()
 
-cherrypy.log('Mounting app')
+for c in CONFIG_FILES:
+    if os.access(c, os.R_OK):
+        cherrypy.config.update(c)
 
-# For implementation on PythonAnywhere.com:
-# mount app directories as `app` object, as set in wsgi file.
-start = True # main?
+# We can run the application on PythonAnywhere.com by importing this object
+# into the WSGI script.
+app = cherrypy.Application(cherrypy.root)
 
-configfile = 'etc/cherrypy.conf'
-# Updated to have server in first part of socket_port arg so this can be retried now.
-# It appears in a testing a small script that the config dictionary can be passed for quickstart but not mount.
-# configDict={
-#         'global':
-#             {
-#             #'environment':'embedded',
-#             'server.socket_port': 9090,
-#             },
-#         }
 
-# The script runs in the cloud PythonAnywhere.com by importing the `app` object and running it on the WSGI file. For all other uses, it is expected that this script will be run as the main file.
 if __name__ == '__main__':
-    cherrypy.log('Cherrypy Version: {}'.format(cherrypy.__version__))
-
-    cherrypy.tree.mount(cherrypy.root, script_name='', config=configfile)
-    # It's not working to set this in [global] under config file.
-    cherrypy.server.socket_port = conf.getint('API', 'port')
-
     cherrypy.engine.start()
     cherrypy.engine.block()
-
-else:
-    app = cherrypy.Application(cherrypy.root, script_name='',
-                               config='etc/cherrypy.conf')
