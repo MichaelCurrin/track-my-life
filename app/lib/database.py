@@ -48,7 +48,6 @@ def initialise(createAll=True, dropAll=False):
             m.dropTable(ifExists=True, dropJoinTables=True, cascade=True)
 
     # Create tables.
-    # Todo: see Piccing database.py for how to deal with contraints here.
     if createAll:
         for m in modelsList:
             cherrypy.log("Creating %s" % m.__name__, 'DATABASE.INIT')
