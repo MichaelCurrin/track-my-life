@@ -10,9 +10,9 @@ __author__ = '@MichaelCurrin'
 
 import os
 import sys
-# From a PythonAnywhere cherrypy tutorial. TODO confirm how this works
-# with own logs vs PythonAnywhere logs and also the fact the log.screen is
-# set to False by using embedded mode.
+# From a PythonAnywhere cherrypy tutorial.
+# TODO: This might send stdout to PA error logs - this could be removed
+# once own log files are implemented.
 sys.stdout = sys.stderr
 
 import cherrypy
@@ -55,7 +55,7 @@ for c in CONFIG_FILES:
 
 # We can run the application on PythonAnywhere.com by importing this object
 # into the WSGI script.
-app = cherrypy.Application(cherrypy.root)
+app = cherrypy.tree.mount(cherrypy.root)
 
 
 if __name__ == '__main__':
