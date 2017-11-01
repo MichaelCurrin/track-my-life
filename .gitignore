@@ -10,7 +10,7 @@ virtualenv
 *.sqlite
 
 # Local configuration files
-etc/*.local.*
+app/etc/*.local.*
 
 # Log files
 app/var/*/*.log*
