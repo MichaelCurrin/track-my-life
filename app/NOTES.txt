@@ -1,7 +1,0 @@
-shortcut: source _logger
-(see ~/.local/bin)
-
-sqlite:
--- get all table names
--- https://stackoverflow.com/questions/82875/how-to-list-the-tables-in-an-sqlite-database-file-that-was-opened-with-attach
-SELECT name FROM sqlite_master;
