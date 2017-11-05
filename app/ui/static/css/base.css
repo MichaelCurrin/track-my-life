@@ -13,16 +13,16 @@ html {
 }
 
 body {
-    font:14px/1.5 Arial, Helvetica, sans-serif;
-    margin:0;
+    font: 14px/1.5 Arial, Helvetica, sans-serif;
 }
 
 header {
+    background-color: #673AB7;
     box-sizing: border-box;
     text-align: center;
     width: 100%;
     padding: 25px 40px;
-    background-color: #673AB7;
+
     overflow: hidden;
 }
 
@@ -42,8 +42,7 @@ header a {
     border-radius: 3px;
     font: bold 14px/1 'Open Sans', sans-serif;
     text-transform: uppercase;
-    background-color:#F05283;
-
+    background-color: #F05283;
 }
 
 ul {
@@ -87,7 +86,28 @@ ul li {
     display: inline-block;
 }
 
+.main-content {
+    margin-bottom: 25px;
+}
 
+footer {
+    background-color: #673AB7;
+
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+
+    position: fixed;
+    padding: 5px;
+    bottom: 0;
+}
+
+footer a {
+    color: #eee;
+}
+
+
+/*Mobile settings*/
 @media (max-width: 1000px) {
 
     header h1{
@@ -100,6 +120,3 @@ ul li {
     }
 }
 
-.main-content {
-    margin-bottom: 75px;
-}
