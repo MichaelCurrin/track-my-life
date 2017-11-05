@@ -2,23 +2,22 @@
 
 /* still go through this to see what effect is has on menu and overall page */
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html{
+html {
     background-color: #efefef;
 }
 
-body{
+body {
     font:14px/1.5 Arial, Helvetica, sans-serif;
     margin:0;
 }
 
-
-header{
+header {
     box-sizing: border-box;
     text-align: center;
     width: 100%;
@@ -28,13 +27,13 @@ header{
 }
 
 
-header h1{
+header h1 {
     float: left;
     font: normal 24px/1.5 'Open Sans', sans-serif;
     color: #fff;
 }
 
-header a{
+header a {
     color:#fff;
     float: right;
     text-decoration: none;
@@ -54,10 +53,10 @@ ul {
     padding: 20px;
     margin-top: 0;
     text-align: center;
-    margin-bottom: 75px;
+    margin-bottom: 10px;
 }
 
-ul a{
+ul a {
     text-decoration: none;
     color: #FFF;
     text-align: left;
@@ -74,7 +73,7 @@ ul a{
     transition: 0.2s ease;
 }
 
-ul li a.active{
+ul li a.active {
     background-color: #F05283;
     pointer-events: none;
 }
@@ -84,13 +83,12 @@ ul li a:hover {
 }
 
 
-ul li{
+ul li {
     display: inline-block;
 }
 
 
 @media (max-width: 1000px) {
-
 
     header h1{
         float: none;
@@ -100,9 +98,8 @@ ul li{
         margin-top: 25px;
         float: none;
     }
-
 }
 
-.main-content{
+.main-content {
     margin-bottom: 75px;
 }
