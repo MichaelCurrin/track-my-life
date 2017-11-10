@@ -8,17 +8,13 @@ log and read their personal activity in a browser.
 """
 __author__ = '@MichaelCurrin'
 
+import argparse
 import os
 import sys
-# From a PythonAnywhere cherrypy tutorial.
-# TODO: This might send stdout to PA error logs - this could be removed
-# once own log files are implemented.
-sys.stdout = sys.stderr
+#sys.stdout = sys.stderr
 
 import cherrypy
 
-# Be careful when testing this line alone in python command line, as you are
-# working in '__main__' and the script will be imported as '__main__'.
 from lib import APP_DIR, conf
 from lib import database as db
 from services import setupSERVICES
@@ -30,7 +26,7 @@ class Root(object):
     """
 
     ## TEMP
-    ## Leave this unexposed while in def, so that we get a 404 on a bad path.
+    ## Leave this unexposed while in dev, so that we get a 404 on a bad path.
     ##@cherrypy.expose
     def default(self, *args, **kwargs):
         """
@@ -39,34 +35,86 @@ class Root(object):
         raise cherrypy.HTTPRedirect('/', 302)
 
 
-# Only keep dropAll=True while in develop mode, to replace tables each time
-# but also delete all data.
-db.initialise(dropAll=True)
+def setup():
+    """
+    Main application setup.
 
-controllersConf = os.path.join(APP_DIR, 'etc', 'controllers.conf')
-controllersLocalConf = os.path.join(APP_DIR, 'etc', 'controllers.local.conf')
-servicesConf = os.path.join(APP_DIR, 'etc', 'services.conf')
-servicesLocalConf = os.path.join(APP_DIR, 'etc', 'services.local.conf')
+    Read the log and http configuration files for the cherrypy app.
+    Mount the web app and services app on the cherrypy tree and apply
+    configuration to them.
 
-webApp = cherrypy.tree.mount(Root(), '/', config=controllersConf)
-servicesApp = cherrypy.tree.mount(setupSERVICES(), '/services',
-                                  config=servicesConf)
+    @return webApp: The application with web app and services app mounted.
+    """
+    for c in ('log.conf', 'log.local.conf', 'http.conf', 'http.local.conf'):
+        path = os.path.join(APP_DIR, 'etc', c)
+        if os.access(path, os.R_OK):
+            cherrypy.config.update(path)
 
-# If local config files exist, merge in the tree-specific sections for
-# the appropriate app.
-if os.access(controllersLocalConf, os.R_OK):
-    webApp.merge(controllersLocalConf)
-if os.access(servicesLocalConf, os.R_OK):
-    servicesApp.merge(servicesLocalConf)
+    cherrypy.log("Mounting application")
 
-for c in ('http.conf', 'http.local.conf'):
-    path = os.path.join(APP_DIR, 'etc', c)
-    if os.access(path, os.R_OK):
-        cherrypy.config.update(path)
+    controllersConf = os.path.join(APP_DIR, 'etc', 'controllers.conf')
+    controllersLocalConf = os.path.join(APP_DIR, 'etc',
+                                        'controllers.local.conf')
+    servicesConf = os.path.join(APP_DIR, 'etc', 'services.conf')
+    servicesLocalConf = os.path.join(APP_DIR, 'etc', 'services.local.conf')
+
+    webApp = cherrypy.tree.mount(Root(), '/', config=controllersConf)
+    servicesApp = cherrypy.tree.mount(setupSERVICES(), '/services',
+                                      config=servicesConf)
+
+    # If local config files exist, merge in the tree-specific sections for
+    # the appropriate app.
+    if os.access(controllersLocalConf, os.R_OK):
+        webApp.merge(controllersLocalConf)
+    if os.access(servicesLocalConf, os.R_OK):
+        servicesApp.merge(servicesLocalConf)
+
+    return webApp
+
+
+def initialise(dropAll=False):
+    """
+    Main application initialisation.
+
+    @return: None
+    """
+    db.initialise(dropAll=dropAll)
+
+
+def run():
+    """
+    Read command-line arguments, setup web app and server, intililiase app
+    and db and start the app.
+
+    @return app: The application with web app and services app mounted. This
+        is returned so that the app exists in the global space and can be
+        imported into the WSGI script.
+    """
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('-d', '--drop',
+                        action='store_true',
+                        help="Boolean flag. If True, drop the entire db on app"
+                            " start, then create tables. Default False.")
+
+    args = parser.parse_args()
+
+    # TODO:
+    # - Daemonise
+    # - PID
+    # - user and log permissions
+
+    app = setup()
+
+    initialise(dropAll=args.drop)
+
+    return app
+
 
 # We can run the application on PythonAnywhere.com by importing this object
-# into the WSGI script.
-app = webApp
+# into the WSGI script. In that case, we must not start or block the app.
+app = run()
+
 
 if __name__ == '__main__':
     cherrypy.engine.start()

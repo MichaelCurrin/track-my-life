@@ -2,9 +2,14 @@
 """
 SQLite database model in SQLObject.
 """
+import uuid
+
 import sqlobject as so
 
 from connection import conn
+
+
+UUID = lambda: uuid.uuid4().hex
 
 
 class Base(so.SQLObject):
@@ -18,9 +23,13 @@ class User(Base):
     """
     Table of app users.
     """
+    class sqlmeta:
+        # User is a reserved word in some databases, so don't use it.
+         table = "user_table"
+
     # A GUID used to uniquely identify this item across systems and on the
-    # internet. Does alternateID also enforce unique?
-    #guid = so.StringCol(notNull=True, default=UUID, unique=True, alternateID=True)
+    # internet.
+    guid = so.UnicodeCol(alternateID=True, default=UUID)
     # Username defaults to None/Null, but if set it must be unique.
     username = so.UnicodeCol(default=None, unique=True, length=31)
     # The time the user profile was created. Defaults to current time.
