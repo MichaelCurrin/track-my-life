@@ -13,4 +13,4 @@ virtualenv
 app/etc/*.local.*
 
 # Log files
-app/var/*/*.log*
+app/var/log/*/*.log*
