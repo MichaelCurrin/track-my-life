@@ -78,6 +78,10 @@ def initialise(dropAll=False):
 
     @return: None
     """
+    dbDir = os.path.dirname(conf.get('db', 'path'))
+    assert os.access(dbDir, os.W_OK), "Unable to write to configured db"\
+                                      " dir: {0}".format(dbDir)
+
     db.initialise(dropAll=dropAll)
 
 
