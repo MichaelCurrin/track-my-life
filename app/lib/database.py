@@ -7,13 +7,11 @@ import os
 
 import cherrypy
 
-from lib import APP_DIR
+from lib import APP_DIR, conf
 # Allow access to tables of models package as properties of database module.
 from models import *
 # Make connection available in database module.
 from models.connection import conn
-
-DEFAULTS_FILE = os.path.join(APP_DIR, 'lib', 'defaultData.json')
 
 
 def defaultData():
@@ -27,9 +25,10 @@ def defaultData():
     """
     cherrypy.log("Adding default data", context='LIB.DATABASE.DEFAULTDATA')
 
-    assert os.access(DEFAULTS_FILE, os.R_OK), 'Unable to read {0}'.format(
-                                              DEFAULTS_FILE)
-    with open(DEFAULTS_FILE, 'rb') as dataFile:
+    defaultDataPath = conf.get('db', 'defaultDataPath')
+    assert os.access(defaultDataPath, os.R_OK), 'Unable to read {0}'.format(
+                                                 defaultDataPath)
+    with open(defaultDataPath, 'rb') as dataFile:
         data = json.load(dataFile)
 
     # Insert all the XXX types, if not yet defined.
