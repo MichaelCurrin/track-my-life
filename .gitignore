@@ -1,47 +1,16 @@
-### Project ###
+# Python compiled files
+*.py[cod]
 
-# virtual environment - this could be a dir or a symlink to ~/.local/virtualenvs/my_venv/
-virtualenv*
+# Possible virtual environment directory or symlink
+virtualenv/
+virtualenv
 
-# local configuration files
-*.local.*
-
-# Bazaar VCS files, from migration.
-.bzr/
-.bzrignore
-
-# Database
+# Database - allow either as extension.
 *.db
 *.sqlite
 
+# Local configuration files
+app/etc/*.local.*
 
-### Github Python ###
-
-# Taken from Github recommended list for Python and filtered to fewer items.
-
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# dotenv
-.env
-
-# virtualenv
-.venv
-venv/
-ENV/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# mkdocs documentation
-/site
+# Log files
+app/var/log/*/*.log*

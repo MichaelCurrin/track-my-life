@@ -24,6 +24,7 @@ class Form(object):
 
     Todo: set accept content in etc as JSON instead of www form encode?
     """
+
     exposed = True
 
     # Read HTML templates from conf.
@@ -54,7 +55,7 @@ class Form(object):
         Ask user to login/register otherwise.
 
         @param name: The name of the area to be tracked. Default to None.
-        
+
         @keyword args: Values after the name in the URL as list.
         @keyword kwargs: Form field names and values as a dictionary.
         """
@@ -62,7 +63,7 @@ class Form(object):
         # otherwise use column's default value of now.
         datetimeStr = kwargs.pop('timestamp', None)
         if datetimeStr:
-            datetimeFormat =  '%Y-%m-%dT%H:%M'
+            datetimeFormat = '%Y-%m-%dT%H:%M'
             timestamp = datetime.datetime.strptime(datetimeStr, datetimeFormat)
 
             entry = db.JSONData(userID=1, area=name, data=kwargs,
@@ -97,6 +98,7 @@ class Analytics(object):
 
     Get aggregated data out from database for the user.
     """
+
     exposed = True
 
     def GET(self, name=None, *args, **kwargs):
@@ -115,6 +117,7 @@ class Analytics(object):
 
         # convert to string to allow JSON output to not create errors
         return str(res)
+
 
 if __name__ == '__main__':
     print Analytics().GET('')

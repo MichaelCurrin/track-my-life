@@ -4,6 +4,10 @@ from lib import database as db
 # rather than as API
 
 class User(object):
+    """
+    Endpoint for services/rest/form/user
+    """
+
     # Consider where userID can be set when arriving on site
     # as registration. Or tempory value from random number.
     # Either way this can be stored in cherrypy session or cherrypy.response.cookie
@@ -24,7 +28,9 @@ class User(object):
 
 class Mood(object):
     """
+    Endpoint for services/rest/form/mood
     """
+
     exposed = True
 
     def GET(self, *args, **kwargs):
