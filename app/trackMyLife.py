@@ -1,7 +1,7 @@
 #!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 """
-Track My Life server application file.
+Track My Life main application file.
 
 Run a Python server to serve HTML and allow REST API requests, so users can
 log and read their personal activity in a browser.
