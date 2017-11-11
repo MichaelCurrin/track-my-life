@@ -5,7 +5,18 @@ _Back to [Readme](/README.md)_
 
 ## Run the app
 
-Start the CherryPy server, to serve HTML and allow REST API requests
+Start the CherryPy server in order to serve HTML in the browser, allow REST API requests and interface with the databae.
+
+
+### Embedded application
+
+Steps for running on PythonAnywhere.com
+
+TBC
+
+
+### Local application
+
 
 1. Tail your log files
 

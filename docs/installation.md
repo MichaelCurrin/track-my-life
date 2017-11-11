@@ -45,4 +45,33 @@ _Back to [Readme](/README.md)_
 
 ## Configure
 
+The config files are setup by default to work on an embedded application environment such on [PythonAnywhere.com]. 
+
+
+### Embedded application
+
 TBC
+
+
+### Local application
+
+If running on a local machine, make the follow local config changes.
+
+
+```bash
+$ cd app/etc
+$ touch http.local.conf
+```
+
+Then edit the created file in your preferred text editor and add the following.
+
+```
+[global]
+
+checker.on: True
+engine.autoreload.on: True
+request.show_mismatched_params: True
+request.show_tracebacks: True
+tools.log_headers.on: True
+
+```
