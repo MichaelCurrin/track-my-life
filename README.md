@@ -8,7 +8,7 @@ The trackMyLife application is implemented in Python 2.7 and consists of a SQLit
 
 The kind of records I look to track for myself daily activities, mood, habits, goals, drinking water and driving/petrol. The idea is to track all of these in my own system, so that I can customise and centralise the creation of my personal data, then combine it however I wish when reporting and analysing it.
 
-I am developing and hosting the app on https://pythonanywhere.com. I currently have the site password protected but will share at some stage.
+I am developing and hosting the app on https://pythonanywhere.com for my own private use, but this could be expanded publically with improved functionality and a lot of security and privacy enhancements.
 
 ## Table of Contents
 
