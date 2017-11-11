@@ -14,6 +14,7 @@ class Services(object):
     """
     Handler for Services service as base/services/ .
     """
+
     def __init__(self):
         """
         Use this for testing purposes.
@@ -28,7 +29,12 @@ class Services(object):
 
 
 def setupSERVICES():
-    """Create Services instance and add other instances to it."""
+    """
+    Create Services instance and add other instances to it.
+
+    @return services: instance of Services, with rest added as attribute.
+    """
+
     services = Services()
     services.rest = setupREST()
 
