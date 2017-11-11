@@ -10,6 +10,9 @@ The kind of records I look to track for myself daily activities, mood, habits, g
 
 I am developing and hosting the app on https://pythonanywhere.com for my own private use, but this could be expanded publically with improved functionality and a lot of security and privacy enhancements.
 
+Many thanks to the creators of the [freebie clean and response forms](http://tutorialzine.com/2015/07/freebie-7-clean-and-responsive-forms/) over at [tutorialzine.com](http://tutorialzine.com), as those forms are the base the HTML and CSS implemented here.
+
+
 ## Table of Contents
 
 - [Usage](/docs/usage.md)
