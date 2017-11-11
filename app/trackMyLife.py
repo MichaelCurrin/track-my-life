@@ -50,7 +50,7 @@ def setup():
         if os.access(path, os.R_OK):
             cherrypy.config.update(path)
 
-    cherrypy.log("Mounting application")
+    cherrypy.log("Mounting application", context="SETUP")
 
     controllersConf = os.path.join(APP_DIR, 'etc', 'controllers.conf')
     controllersLocalConf = os.path.join(APP_DIR, 'etc',

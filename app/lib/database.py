@@ -11,8 +11,6 @@ from lib import APP_DIR
 # Allow access to tables of models package as properties of database module.
 from models import *
 # Make connection available in database module.
-# e.g. database.conn.queryAll(statement)
-# e.g. database.conn.queryOne(statement)
 from models.connection import conn
 
 DEFAULTS_FILE = os.path.join(APP_DIR, 'lib', 'defaultData.json')
@@ -71,10 +69,10 @@ def initialise(createAll=True, dropAll=False):
     @param dropAll: If B{True} (default is B{False}), all existing tables will
         be dropped first before they are created again if required.
     @type dropAll: bool
+
+    @return: None
     """
     modelsList = []
-
-    cherrypy.log("Initialising database")
 
     # Get names.
     import models as ml
