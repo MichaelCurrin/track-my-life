@@ -2,20 +2,17 @@
 """
 SQLite database model in SQLObject.
 """
-import uuid
-
 import sqlobject as so
 
 from connection import conn
-
-
-UUID = lambda: uuid.uuid4().hex
+from lib import genGUID
 
 
 class Base(so.SQLObject):
     """
     Template table for others to derive from.
     """
+
     _connection = conn
 
 
@@ -23,13 +20,14 @@ class User(Base):
     """
     Table of app users.
     """
+
     class sqlmeta:
         # User is a reserved word in some databases, so don't use it.
-         table = "user_table"
+        table = "user_table"
 
     # A GUID used to uniquely identify this item across systems and on the
     # internet.
-    guid = so.UnicodeCol(alternateID=True, default=UUID)
+    guid = so.UnicodeCol(alternateID=True, default=genGUID)
     # Username defaults to None/Null, but if set it must be unique.
     username = so.UnicodeCol(default=None, unique=True, length=31)
     # The time the user profile was created. Defaults to current time.
@@ -38,8 +36,9 @@ class User(Base):
 
 class Record(Base):
     """
-    Template table for other record tables to derive from.
+    Base table for other record tables to derive from.
     """
+
     # Add a foreign key to id in User table.
     # This is user_id in SQL or userID in Python.
     user = so.ForeignKey('User')
@@ -58,7 +57,8 @@ class Record(Base):
             User.get(userID)
         except so.SQLObjectNotFound:
             raise so.SQLObjectNotFound("Unable to create entry since user ID "
-                "{0} is not in User table.".format(userID))
+                                       "{0} is not in User table."
+                                       .format(userID))
         else:
             self._SO_set_userID(userID)
 
@@ -70,6 +70,7 @@ class JSONData(Record):
     Todo: extract date from data if available and overwrite value in
         inherited timestamp column. Consider conversion of datatypes.
     """
+
     # Optional label to describe the area or topic or page the data was
     # submitted on.
     area = so.UnicodeCol(default='', length=31)
@@ -80,6 +81,7 @@ class Note(Record):
     """
     Record diary entries as text with short title and a longer note.
     """
+
     title = so.UnicodeCol(default='', length=31)
     note = so.UnicodeCol(default='', length=255)
 
@@ -88,6 +90,7 @@ class Mood(Record):
     """
     Table to hold mood data.
     """
+
     # Emotional score from -2 to +2.
     emotion = so.IntCol(default=0)
 
@@ -112,7 +115,7 @@ class Mood(Record):
         except TypeError:
             raise 'TypeError, Emotion score must be an integer.'
 
-        assert -2<=intValue<=2, \
+        assert -2 <= intValue <= 2, \
             'ValueError, Emotion score must be between -2 and +2.'
 
         self._SO_set_emotion(intValue)

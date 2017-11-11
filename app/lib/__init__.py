@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 """
 Initialisation file for lib directory.
 """
 import os
+import uuid
 from ConfigParser import SafeConfigParser
 
 # Available with `from lib import APP_DIR`.
@@ -35,6 +37,14 @@ class AppConf(SafeConfigParser):
 
         self.read(confPaths)
         self.set('DEFAULT', 'appDir', APP_DIR)
+
+
+def genGUID():
+    """
+    Generate and return a random 32-character lowercase alphanumeric string,
+    to be used as a GUID.
+    """
+    return uuid.uuid4().hex
 
 
 conf = AppConf()
