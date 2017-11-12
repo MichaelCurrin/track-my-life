@@ -1,6 +1,7 @@
-html{
+html {
     background-color: #f3f3f3;
 }
+
 
 /*
 The approach of the CSS from the template is to:
@@ -8,7 +9,7 @@ The approach of the CSS from the template is to:
     layout mobile with inputs below headings
 */
 
-.form-basic{
+.form-basic {
     max-width: 640px;
     margin: 0 auto;
     padding: 55px;
@@ -21,20 +22,26 @@ The approach of the CSS from the template is to:
     text-align: center;
 }
 
-.form-basic .form-row{
-    text-align: left;
-    margin-bottom: 22px;
-}
 
-.form-basic .form-title-row{
+.form-basic .form-title-row {
     text-align: center;
     margin-bottom: 30px;
 }
 
+.form-basic .form-row {
+    text-align: left;
+    margin-bottom: 22px;
+}
+
+fieldset {
+    padding: 5px;
+    border: 2px dashed #ddd;
+    margin-bottom: 10px;
+}
 
 /* The form title */
 
-.form-basic h1{
+.form-basic h1 {
     display: inline-block;
     color:  #4c565e;
     padding: 0 10px 15px;
@@ -44,24 +51,27 @@ The approach of the CSS from the template is to:
     box-sizing: border-box;
 }
 
-.form-basic h2{
+.form-basic h2 {
     display: inline-block;
     color:  #4c565e;
     margin: 0;
     font-size: 18;
 }
 
-.form-basic h3{
+.form-basic h3 {
     display: inline-block;
     color:  #aaaaaa;
     margin: 0;
     font-size: 14;
 }
 
+.form-basic .form-row > label {
+    color: #888;
+}
 
 /* This adds padding on the left and lines up all the
 checkboxes on desktop regardless of description length. */
-.form-basic .form-row > label span{
+.form-basic .form-row > label span {
     display: inline-block;
     box-sizing: border-box;
     color: #5F5F5F;
@@ -71,7 +81,8 @@ checkboxes on desktop regardless of description length. */
     padding: 12px 25px;
 }
 
-/* This has no effect for checkboxes at least. */
+/* This has no effect for checkboxes at least.
+   This could be used for inputs not matching those set*/
 /*.form-basic input{
     color:  #5f5f5f;
     box-sizing: border-box;
@@ -87,23 +98,23 @@ checkboxes on desktop regardless of description length. */
     width: auto;
 }
 
-.form-basic input[type=checkbox]{
+.form-basic input[type=checkbox] {
     margin-top: 13px;
 }
 
-.form-basic input[type=number]{
+.form-basic input[type=number] {
     margin-top: 10px;
 }
 
-.form-basic input[type=datetime-local]{
+.form-basic input[type=datetime-local] {
     margin-top: 9px;
 }
 
-.form-basic input[type=range]{
+.form-basic input[type=range] {
     margin-top: 11px;
 }
 
-.form-basic input[type=color]{
+.form-basic input[type=color] {
     margin-top: 10px;
 }
 
@@ -164,22 +175,20 @@ checkboxes on desktop regardless of description length. */
 }
 
 
-
-
 @media (max-width: 600px) {
 
-    .form-basic{
+    .form-basic {
         padding: 30px;
         max-width: 480px;
     }
 
-    .form-basic .form-row{
+    .form-basic .form-row {
         max-width: 300px;
         margin: 25px auto;
         text-align: left;
     }
 
-    .form-basic .form-title-row{
+    .form-basic .form-title-row {
         margin-bottom: 50px;
     }
 
@@ -199,7 +208,7 @@ checkboxes on desktop regardless of description length. */
     * style of desktop. But consider margin values
     * on overall and/or mobile.
     */
-    .form-basic .form-row > label span{
+    .form-basic .form-row > label span {
         display: block;
         text-align: left;
         padding: 0 0 15px;

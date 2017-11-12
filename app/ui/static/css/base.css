@@ -12,6 +12,7 @@ html {
     background-color: #efefef;
 }
 
+
 body {
     font: 14px/1.5 Arial, Helvetica, sans-serif;
 }
@@ -45,6 +46,12 @@ header a {
     background-color: #F05283;
 }
 
+/*Style the menu
+
+ Note that the ul and ul li formatting could be applied to form sections and form
+ elements to get them to flow, but this can get messy to manage so for now
+ stick to vertical layout.
+*/
 ul {
     list-style: none;
     border-bottom: 1px solid #EAEAEA;
@@ -86,9 +93,11 @@ ul li {
     display: inline-block;
 }
 
+
 .main-content {
     margin-bottom: 25px;
 }
+
 
 footer {
     background-color: #673AB7;
